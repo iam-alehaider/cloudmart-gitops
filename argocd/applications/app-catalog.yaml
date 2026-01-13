@@ -8,7 +8,7 @@ metadata:
   annotations:
     argocd.argoproj.iosync-wave: "1"
 spec:
-  project: cloudmart-microservices-eks
+  project: cloudmart-microservices-apps
 
   sources:
     # ✅ Source 1: Helm chart from APP repo
