@@ -6,17 +6,13 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
 image:
   repository: 119778517587.dkr.ecr.us-west-2.amazonaws.com/demo-private/ui
-  tag: "e9128c5"   # temporary, will be overwritten by CI
+  tag: "e523050" # temporary, will be overwritten by CI
   pullPolicy: IfNotPresent
-
 imagePullSecrets: []
-
 nameOverride: ""
 fullnameOverride: ""
-
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
@@ -24,12 +20,9 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   name: ""
-
 podAnnotations: {}
-
 podSecurityContext:
   fsGroup: 1000
-
 securityContext:
   capabilities:
     drop:
@@ -39,40 +32,33 @@ securityContext:
   readOnlyRootFilesystem: true
   runAsNonRoot: true
   runAsUser: 1000
-
 service:
   type: ClusterIP
   port: 80
-
 resources:
   limits:
     memory: 512Mi
   requests:
     cpu: 128m
     memory: 512Mi
-
 autoscaling:
   enabled: false
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 50
-
 nodeSelector: {}
 tolerations: []
 affinity: {}
 topologySpreadConstraints: []
-
 metrics:
   enabled: true
   podAnnotations:
     prometheus.io/scrape: "true"
     prometheus.io/port: "8080"
     prometheus.io/path: "/actuator/prometheus"
-
 configMap:
   create: true
   name:
-
 app:
   endpoints:
     catalog: http://retail-store-catalog:80
@@ -87,7 +73,6 @@ app:
       region: ""
     openai:
       baseUrl: ""
-
 ingress:
   enabled: false
   className: "nginx"
@@ -101,7 +86,6 @@ ingress:
     nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
   tls: []
   hosts: []
-
 ingresses:
   - name: direct
     className: "nginx"
@@ -114,7 +98,6 @@ ingresses:
       nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
       nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
     tls: []
-
   - name: domain
     className: "nginx"
     hosts:
@@ -131,24 +114,19 @@ ingresses:
       - secretName: tls-secret
         hosts:
           - retail-store.iam-alehaider.com
-
 certManager:
   createClusterIssuer: true
   email: ale.haider498@gmail.com
   clusterIssuerName: "letsencrypt-prod"
   server: "https://acme-v02.api.letsencrypt.org/directory"
   privateKeySecretName: "letsencrypt-prod-key"
-
 istio:
   enabled: false
   hosts: []
-
 opentelemetry:
   enabled: false
   instrumentation: ""
-
 podDisruptionBudget:
   enabled: false
   minAvailable: 2
   maxUnavailable: 1
-
