@@ -6,7 +6,7 @@
 replicaCount: 1
 image:
   repository: 119778517587.dkr.ecr.us-west-2.amazonaws.com/demo-private/cart
-  tag: dcbad0e # temporary, will be overwritten by CI
+  tag: af4f9d6 # temporary, will be overwritten by CI
   pullPolicy: IfNotPresent
 imagePullSecrets: []
 nameOverride: ""
