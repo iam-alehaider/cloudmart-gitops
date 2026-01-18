@@ -8,7 +8,7 @@
 replicaCount: 1
 image:
   repository: 119778517587.dkr.ecr.us-west-2.amazonaws.com/demo-private/ui
-  tag: a41ff7a # temporary, will be overwritten by CI
+  tag: be64f07 # temporary, will be overwritten by CI
   pullPolicy: IfNotPresent
 imagePullSecrets: []
 nameOverride: ""
