@@ -75,14 +75,25 @@ Defines Argo CD Application resources:
 2. CI builds image
 3. Push to ECR
 4. Update GitOps repo
+
+
+<img width="1437" height="638" alt="Screenshot 2026-01-13 200446" src="https://github.com/user-attachments/assets/7d9fd5f4-793c-4a6b-a356-deb215b021f4" />
+
 5. Argo CD sync
 6. Pods updated in EKS
+
+<img width="1366" height="524" alt="Screenshot 2026-01-16 055404" src="https://github.com/user-attachments/assets/5cde033e-7190-437d-8271-e28f10f959fe" />
+
+
+<img width="1895" height="804" alt="Screenshot 2026-01-19 025552" src="https://github.com/user-attachments/assets/74197bac-a53c-4ca0-aed3-e230fa032fad" />
 
 ---
 
 ## Author
 
-Ali Haider — Cloud & DevOps Engineer
+Ali Haider DevOps / Cloud Engineer /linux
+
+
 
 
 
