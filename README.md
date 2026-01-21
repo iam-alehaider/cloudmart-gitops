@@ -1,3 +1,4 @@
+
 # 🛒 CloudMart GitOps Deployment with Argo CD on AWS EKS
 
 This repository implements **GitOps-based continuous delivery** for the CloudMart microservices platform using **Argo CD, Helm, and Amazon EKS**.
@@ -8,165 +9,81 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 
 ## 🧩 Tech Stack
 
-- ☸️ Kubernetes (Amazon EKS)
-- 🚀 Argo CD (GitOps Continuous Delivery)
-- ⎈ Helm (Application Packaging)
-- 🐳 Docker (Containerization)
-- 🔁 CI/CD (GitHub Actions / Jenkins)
-- ☁️ AWS (ECR, EKS, IAM, IRSA)
-- 🧱 Terraform (for EKS & infra provisioning – in separate repo)
+- Kubernetes (Amazon EKS)
+- Argo CD (GitOps Continuous Delivery)
+- Helm (Application Packaging)
+- Docker (Containerization)
+- CI/CD (GitHub Actions / Jenkins)
+- AWS (ECR, EKS, IAM, IRSA)
+- Terraform (for EKS & infra provisioning – in separate repo)
 
 ---
 
 ## 📁 Repository Structure
 
-```text
 .
 ├── argocd/
-│   └── applications.yaml        # Argo CD Application definitions
+│ └── applications.yaml
 │
 └── envs/
-    └── prod/                    # Production environment values
-        ├── cart-values.yaml
-        ├── catalog-values.yaml
-        ├── checkout-values.yaml
-        ├── orders-values.yaml
-        └── ui-values.yaml
+└── prod/
+├── cart-values.yaml
+├── catalog-values.yaml
+├── checkout-values.yaml
+├── orders-values.yaml
+└── ui-values.yaml
 
 
 
----
-
-
-#🔹 envs/prod
-
-Contains environment-specific Helm values for each microservice, including:
-
-Image tags
-
-Resource limits
-
-Environment variables
-
-Service configuration
 
 ---
 
-#🔹 argocd/applications.yaml
+## envs/prod
 
-Defines Argo CD Application resources that:
+Contains environment-specific Helm values:
 
-Track Helm charts from application repositories
+- Image tags
+- Resource limits
+- Environment variables
+- Service configuration
 
-Apply values from this GitOps repository
+---
 
-Auto-sync changes to the cluster
+## argocd/applications.yaml
 
-📦 Microservices Deployed
+Defines Argo CD Application resources:
 
-🛒 Cart Service
+- Tracks Helm charts from app repositories
+- Applies values from this repo
+- Auto-syncs to the cluster
 
-📦 Catalog Service
+---
 
-💳 Checkout Service
+## Microservices
 
-📬 Orders Service
+- Cart
+- Catalog
+- Checkout
+- Orders
+- UI
 
-🖥️ UI Frontend
+---
 
-Each service is deployed as an independent Argo CD Application with:
+## Deployment Flow
 
-Helm-based deployment
+1. Code push
+2. CI builds image
+3. Push to ECR
+4. Update GitOps repo
+5. Argo CD sync
+6. Pods updated in EKS
 
-Auto-sync enabled
+---
 
-Self-healing enabled
+## Author
 
-Namespace isolation
-
-🧠 Why GitOps?
-
-This project follows GitOps principles:
-
-✅ Git is the single source of truth
-
-🔁 Easy rollback using Git history
-
-🔒 No manual kubectl in production
-
-📜 Full audit trail of changes
-
-🤖 Continuous reconciliation by Argo CD
-
-If cluster state drifts from Git, Argo CD automatically corrects it.
-
-🚀 Deployment Workflow
-
-Developer pushes code to production branch
-
-CI pipeline builds Docker image
-
-Image is pushed to Amazon ECR
-
-CI updates image tag in this GitOps repository
-
-Argo CD detects Git changes
-
-Argo CD syncs workloads to EKS
-
-Kubernetes updates running pods
-
-➡️ No manual deployment steps required.
-
-🔐 Security Design
-
-❌ No secrets stored in Git
-
-🔑 Secrets injected using:
-
-Kubernetes Secrets
-
-External secret managers (optional)
-
-🛡️ AWS IAM access via IRSA (IAM Roles for Service Accounts)
-
-🔒 Argo CD access controlled using RBAC
-
-
-📊 Architecture Overview
-
-Flow:
-
-Developer → GitHub → CI Pipeline → ECR → GitOps Repo → Argo CD → EKS
-
-
-Separation of Responsibilities:
-
-Application code → App repositories
-
-Infrastructure → Terraform repository
-
-Deployment configuration → This GitOps repository
-
-This improves security, auditability, and team collaboration.
+Ali Haider — Cloud & DevOps Engineer
 
 
 
-This improves security, auditability, and team collaboration.
-
-⚙️ Prerequisites
-
-Amazon EKS cluster
-
-Argo CD installed in the cluster
-
-Helm charts available for services
-
-CI pipeline capable of updating image tags
-
-👨‍💻 Author
-
-Ali Haider
-IT Infrastructure & Cloud Engineer
-Skills: Linux, AWS, Docker, Kubernetes, Terraform, CI/CD, Security
 
