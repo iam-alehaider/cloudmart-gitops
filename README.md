@@ -22,16 +22,24 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 
 ```text
 
+cloudmart-gitops/
 ├── argocd/
-│   └── applications.yaml        # Argo CD Application definitions
-│
+│   ├── applications/
+│   │   ├── app-cart.yaml
+│   │   ├── app-catalog.yaml
+│   │   ├── app-checkout.yaml
+│   │   ├── app-orders.yaml
+│   │   └── app-ui.yaml
+│   └── projects/
+│       └── cloudmart-microservices-apps-eks.yml
 └── envs/
-    └── prod/                   # Production environment values
+    └── prod/
         ├── cart-values.yaml
         ├── catalog-values.yaml
         ├── checkout-values.yaml
         ├── orders-values.yaml
         └── ui-values.yaml
+
 ```
 
 
