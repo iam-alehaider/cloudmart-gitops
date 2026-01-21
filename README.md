@@ -35,8 +35,10 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 
 
 
+---
 
-🔹 envs/prod
+
+#🔹 envs/prod
 
 Contains environment-specific Helm values for each microservice, including:
 
@@ -48,7 +50,9 @@ Environment variables
 
 Service configuration
 
-🔹 argocd/applications.yaml
+---
+
+#🔹 argocd/applications.yaml
 
 Defines Argo CD Application resources that:
 
