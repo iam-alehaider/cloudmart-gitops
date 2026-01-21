@@ -19,8 +19,8 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 
 ---
 
-## 📁 Repository Structure
----
+📁 Repository Structure
+
 
 .
 ├── argocd/
