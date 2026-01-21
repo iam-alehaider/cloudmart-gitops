@@ -19,15 +19,15 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 
 ---
 
-📁 Repository Structure
+## 📁 Repository Structure
 
 
 .
 ├── argocd/
-│   └── applications.yaml        # Argo CD Application definitions
+│   └── applications.yaml         Argo CD Application definitions
 │
 └── envs/
-    └── prod/                    # Production environment values
+    └── prod/                    Production environment values
         ├── cart-values.yaml
         ├── catalog-values.yaml
         ├── checkout-values.yaml
