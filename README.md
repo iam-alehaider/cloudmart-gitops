@@ -22,7 +22,7 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 ## 📁 Repository Structure
 
 ```text
-.
+
 ├── argocd/
 │   └── applications.yaml        # Argo CD Application definitions
 │
