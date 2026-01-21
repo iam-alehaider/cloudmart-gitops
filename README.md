@@ -1,95 +1,184 @@
-# 📌 CloudMart GitOps Repository (ArgoCD Manifests)
+🛒 CloudMart GitOps Deployment with Argo CD on AWS EKS
 
-This repository serves as the **single source of truth** for all Kubernetes deployments in the **CloudMart platform**, following **GitOps principles** with **Argo CD**.
+This repository implements GitOps-based continuous delivery for the CloudMart microservices platform using Argo CD, Helm, and Amazon EKS.
 
-All production workloads are deployed using **Helm charts**, with environment-specific configuration managed through **Helm values stored in this repository**.
+All Kubernetes deployments are managed declaratively via Git, ensuring reliable, auditable, and automated production releases.
 
----
+🧩 Tech Stack
 
-## 🔄 Deployment Flow
+☸️ Kubernetes (Amazon EKS)
 
-GitHub Push → Argo CD Sync → Amazon EKS Cluster
+🚀 Argo CD (GitOps Continuous Delivery)
 
+⎈ Helm (Application Packaging)
 
-- Application repositories handle **build & CI**
-- This repository controls **what runs in the cluster**
-- Argo CD continuously reconciles desired vs actual state
+🐳 Docker (Containerization)
 
----
+🔁 CI/CD (GitHub Actions / Jenkins)
 
-## 📁 Repository Structure
+☁️ AWS (ECR, EKS, IAM, IRSA)
 
-```text
-envs/
-└── prod/
-    ├── cart-values.yaml
-    ├── catalog-values.yaml
-    ├── checkout-values.yaml
-    ├── orders-values.yaml
-    └── ui-values.yaml
+🧱 Terraform (for EKS & infra provisioning – in separate repo)
 
-argocd/
-└── applications.yaml
+📁 Repository Structure
+.
+├── argocd/
+│   └── applications.yaml        # Argo CD Application definitions
+│
+└── envs/
+    └── prod/                    # Production environment values
+        ├── cart-values.yaml
+        ├── catalog-values.yaml
+        ├── checkout-values.yaml
+        ├── orders-values.yaml
+        └── ui-values.yaml
 
+🔹 envs/prod
 
----
-## 📌 Description
+Contains environment-specific Helm values for each microservice.
+This includes:
 
-envs/prod/
-Environment-specific Helm values for each microservice
-argocd/applications.yaml
-Defines Argo CD Application resources for all services
+Image tags
 
+Resource limits
 
-<img width="1111" height="539" alt="8" src="https://github.com/user-attachments/assets/65a12cdb-3397-4e50-962b-19087c97dc25" />
+Environment variables
 
+Service configuration
 
-## 📦 Argo CD Applications
+🔹 argocd/applications.yaml
 
-Each CloudMart microservice is deployed as an Argo CD Application with:
+Defines Argo CD Application resources that:
+
+Track Helm charts from app repositories
+
+Apply values from this GitOps repo
+
+Auto-sync changes to the cluster
+
+📦 Microservices Deployed
+
+🛒 Cart Service
+
+📦 Catalog Service
+
+💳 Checkout Service
+
+📬 Orders Service
+
+🖥️ UI Frontend
+
+Each service is deployed as an independent Argo CD Application with:
 
 Helm-based deployment
+
 Auto-sync enabled
+
 Self-healing enabled
-Namespace-scoped isolation
-Declarative configuration
+
+Namespace isolation
 
 🧠 Why GitOps?
-✅ Version-controlled deployments
-🔁 Easy rollbacks using Git history
+
+This project follows GitOps principles:
+
+✅ Git is the single source of truth
+
+🔁 Easy rollback using Git history
+
 🔒 No manual kubectl in production
-📜 Full audit trail of all changes
-🤖 Automated reconciliation via Argo CD
 
+📜 Full audit trail of changes
 
-## 🚀 How a Deployment Happens
+🤖 Continuous reconciliation by Argo CD
 
+If cluster state drifts from Git, Argo CD automatically corrects it.
 
-Developer pushes code to the production branch
-CI pipeline builds and pushes a Docker image
-CI updates the image tag in this GitOps repository
-Argo CD detects the Git change
-Argo CD automatically syncs the cluster
-EKS cluster updates the workload
+🚀 Deployment Workflow
 
+Developer pushes code to production branch
 
-## 🔐 Security Considerations
+CI pipeline builds Docker image
+
+Image pushed to Amazon ECR
+
+CI updates image tag in this GitOps repo
+
+Argo CD detects Git changes
+
+Argo CD syncs workloads to EKS
+
+Kubernetes updates running pods
+
+➡️ No manual deployment steps required.
+
+🔐 Security Design
 
 ❌ No secrets stored in Git
-🔑 Secrets injected via:
+
+🔑 Secrets injected using:
+
 Kubernetes Secrets
-External secret managers (if configured)
-🛡️ IAM permissions handled via IRSA
-🔒 Argo CD access protected with RBAC
+
+External secret managers (optional)
+
+🛡️ AWS IAM access via IRSA (IAM Roles for Service Accounts)
+
+🔒 Argo CD access controlled using RBAC
+
+📊 Architecture Overview
+
+Flow:
+
+Developer → GitHub → CI Pipeline → ECR → GitOps Repo → Argo CD → EKS
 
 
+Separation of Responsibilities:
 
-## 📊 Architecture Reference
+Application code → App repositories
 
-<img width="1111" height="539" alt="CloudMart GitOps Architecture" src="https://github.com/user-attachments/assets/f3459974-ee5c-44ba-a3e7-848a0322f8af" />
+Infrastructure → Terraform repo
 
-## 🎯 Key Takeaway
+Deployment configuration → This GitOps repo
 
-Git defines the desired state.
-Argo CD enforces it.
-Kubernetes runs it.
+This improves security, auditability, and team collaboration.
+
+⚙️ Prerequisites
+
+Amazon EKS cluster
+
+Argo CD installed in cluster
+
+Helm charts available for services
+
+CI pipeline capable of updating image tags
+
+🧪 Local Testing (Optional)
+
+Helm values can be tested locally:
+
+helm template cart ./chart -f envs/prod/cart-values.yaml
+
+
+This allows validation before committing to Git.
+
+📈 Future Improvements
+
+Multi-environment support (dev / staging / prod)
+
+Argo CD Image Updater integration
+
+Progressive delivery (canary / blue-green)
+
+Policy enforcement with OPA Gatekeeper
+
+Prometheus & Grafana monitoring
+
+👨‍💻 Author
+
+Ali Haider
+IT Infrastructure & Cloud Engineer
+Skills: Linux, AWS, Docker, Kubernetes, Terraform, CI/CD, Security
+
+📍 Lahore, Pakistan
+🌍 Open to international opportunities
