@@ -20,7 +20,7 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 ---
 
 ## 📁 Repository Structure
-
+---
 
 .
 ├── argocd/
@@ -33,10 +33,6 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
         ├── checkout-values.yaml
         ├── orders-values.yaml
         └── ui-values.yaml
-
-
-
-
 
 ---
 
