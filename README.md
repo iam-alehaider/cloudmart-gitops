@@ -90,9 +90,8 @@ Defines Argo CD Application resources:
 ---
 
 ## Author
-
 Ali Haider DevOps / Cloud Engineer /linux
-Github: https://github.com/iam-alehaider
+- Github: https://github.com/iam-alehaider
 
 
 
