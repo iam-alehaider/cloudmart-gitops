@@ -12,7 +12,7 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
 - Argo CD (GitOps Continuous Delivery)
 - Helm (Application Packaging)
 - Docker (Containerization)
-- CI/CD (GitHub Actions / Jenkins)
+- CI/CD (GitHub Actions / Argocd)
 - AWS (ECR, EKS, IAM, IRSA)
 - Terraform (for EKS & infra provisioning – in separate repo)
 
