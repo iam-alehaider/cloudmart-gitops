@@ -31,16 +31,17 @@ envs/
 argocd/
 └── applications.yaml
 
-
-📌 Description
-
+## 📌 Description
 envs/prod/
 Environment-specific Helm values for each microservice
 
 argocd/applications.yaml
 Defines Argo CD Application resources for all services
 
-📦 Argo CD Applications
+<img width="1111" height="539" alt="8" src="https://github.com/user-attachments/assets/65a12cdb-3397-4e50-962b-19087c97dc25" />
+
+
+## 📦 Argo CD Applications
 
 Each CloudMart microservice is deployed as an Argo CD Application with:
 
