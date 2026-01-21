@@ -2,7 +2,6 @@
 # 🛒 CloudMart GitOps Deployment with Argo CD on AWS EKS
 
 This repository implements **GitOps-based continuous delivery** for the CloudMart microservices platform using **Argo CD, Helm, and Amazon EKS**.
-
 All Kubernetes deployments are managed declaratively via Git, ensuring **reliable, auditable, and automated production releases**.
 
 ---
@@ -34,6 +33,9 @@ All Kubernetes deployments are managed declaratively via Git, ensuring **reliabl
         ├── orders-values.yaml
         └── ui-values.yaml
 ```
+
+
+<img width="1111" height="539" alt="8" src="https://github.com/user-attachments/assets/56a285b0-b430-4b58-a032-8f26057443ac" />
 
 
 ## envs/prod
