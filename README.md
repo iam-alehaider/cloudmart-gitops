@@ -40,9 +40,9 @@ The CI pipeline in `cloudmart-microservices-apps` is the **only writer** to this
 
 ---
 
-## Screenshots & Demo
+## CI/CD Deployment Pipeline
 
-### CI/CD Deployment Pipeline
+
 ![CloudMart CI/CD deployment pipeline](docs/screenshots/cicd-pipeline.png)
 > Full 7-step pipeline: code push → CI trigger → Docker build → ECR push → GitOps commit → ArgoCD sync → EKS rollout. Also shows the ArgoCD multi-source Helm strategy and keyless AWS OIDC auth.
 
