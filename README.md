@@ -62,7 +62,6 @@ The CI pipeline in `cloudmart-microservices-apps` is the **only writer** to this
 ![kubectl get pods argocd and microservices](docs/screenshots/pods-running.png)
 > All ArgoCD system pods running in the `argocd` namespace, and all 5 application pods running in `cloudmart-microservices-apps` — zero restarts.
 
-> **Note:** Upload these images to a `docs/screenshots/` folder in this repository to display them here.
 
 ---
 
